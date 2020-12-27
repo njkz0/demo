@@ -1,4 +1,4 @@
-package com.example.demo.config;
+package com.coffee.demo.config;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,17 @@ public class DataBaseConfig {
     DataSource dataSourceProd() {
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.url("jdbc:postgresql://localhost:5432/coffee_machine_prod");
+        dataSourceBuilder.username("postgres");
+        dataSourceBuilder.password("1234567890");
+        return dataSourceBuilder.build();
+    }
+
+
+    @Bean
+    @Profile("test")
+    DataSource dataSourceTest() {
+        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        dataSourceBuilder.url("jdbc:postgresql://localhost:5432/coffee_machine_test");
         dataSourceBuilder.username("postgres");
         dataSourceBuilder.password("1234567890");
         return dataSourceBuilder.build();

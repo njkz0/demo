@@ -1,8 +1,8 @@
-package com.example.demo.service.impl;
+package com.coffee.demo.service.impl;
 
-import com.example.demo.dao.CupOfCoffeeDAO;
-import com.example.demo.model.CupOfCoffee;
-import com.example.demo.service.CupOfCoffeeService;
+import com.coffee.demo.service.CupOfCoffeeService;
+import com.coffee.demo.dao.CupOfCoffeeDAO;
+import com.coffee.demo.model.CupOfCoffee;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -45,7 +45,7 @@ public class CupOfCoffeeServiceImpl  implements CupOfCoffeeService {
     }
 
     @Override
-    public List<String> getAllNamesOfCoffee() {
+    public List<CupOfCoffee> getAllCoffee() {
         return cupOfCoffeeDAO.findAllExistedCoffee();
     }
 }

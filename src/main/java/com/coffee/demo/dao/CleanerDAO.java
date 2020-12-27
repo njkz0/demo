@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.coffee.demo.dao;
 
-import com.example.demo.model.Cleaner;
+import com.coffee.demo.model.Cleaner;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

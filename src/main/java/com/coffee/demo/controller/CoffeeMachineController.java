@@ -1,24 +1,27 @@
-package com.example.demo.controller;
+package com.coffee.demo.controller;
 
-import com.example.demo.model.Cleaner;
-import com.example.demo.model.CupOfCoffee;
-import com.example.demo.service.CleanerService;
-import com.example.demo.service.CupOfCoffeeService;
+import com.coffee.demo.model.Cleaner;
+import com.coffee.demo.model.CupOfCoffee;
+import com.coffee.demo.service.CleanerService;
+import com.coffee.demo.service.CupOfCoffeeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/coffee_machine")
 @RequiredArgsConstructor
+
 public class CoffeeMachineController {
 
     private final CupOfCoffeeService cupOfCoffeeService;
     private final CleanerService cleanerService;
 
-    @GetMapping("/{name}")
+    @PutMapping("/{name}")
     public ResponseEntity<CupOfCoffee> doCoffee(@PathVariable String name) {
         try {
             CupOfCoffee cupOfCoffee = cupOfCoffeeService.doCupOfCoffeeByName(name);
@@ -29,7 +32,7 @@ public class CoffeeMachineController {
         }
     }
 
-    @PostMapping("/create_new_coffee")
+    @PostMapping
     public ResponseEntity<CupOfCoffee> createNewCoffee(@RequestBody CupOfCoffee cupOfCoffee) {
         try {
             CupOfCoffee newCupOfCoffee = cupOfCoffeeService.saveCupOfCoffee(cupOfCoffee);
@@ -59,5 +62,11 @@ public class CoffeeMachineController {
     public ResponseEntity<Cleaner> cleanMachine(){
         Cleaner cleaner = cleanerService.cleanMachine();
         return new ResponseEntity<>(cleaner, HttpStatus.OK);
+    }
+
+    @GetMapping("/all_coffee")
+    public ResponseEntity<List<CupOfCoffee>> getAllCoffee(){
+        List<CupOfCoffee> cupOfCoffees = cupOfCoffeeService.getAllCoffee();
+        return new ResponseEntity<>(cupOfCoffees, HttpStatus.OK);
     }
 }

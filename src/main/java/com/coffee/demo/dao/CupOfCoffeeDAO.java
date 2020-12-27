@@ -1,6 +1,6 @@
-package com.example.demo.dao;
+package com.coffee.demo.dao;
 
-import com.example.demo.model.CupOfCoffee;
+import com.coffee.demo.model.CupOfCoffee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -12,8 +12,8 @@ public interface CupOfCoffeeDAO extends JpaRepository <CupOfCoffee, Integer> {
 
     CupOfCoffee findByName(String name);
 
-    @Query(nativeQuery = true, value = "SELECT names FROM coffee_type")
-    List <String> findAllExistedCoffee();
+    @Query(nativeQuery = true, value = "SELECT * FROM coffee_type")
+    List <CupOfCoffee> findAllExistedCoffee();
 
 
 }
