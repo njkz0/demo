@@ -1,1 +1,1 @@
-insert into cleaner(count) values (2);
+INSERT INTO cleaner(count) VALUES (2);
